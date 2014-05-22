@@ -1,0 +1,23 @@
+{
+  "name": "notification-hub",
+  "version": "0.0.0",
+  "description": "A notification hub using web component.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pierr/notification-hub.git"
+  },
+  "keywords": [
+    "webcomponent",
+    "polymer"
+  ],
+  "author": "Pierre Besson <pierre.besson7@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pierr/notification-hub/issues"
+  },
+  "homepage": "https://github.com/pierr/notification-hub"
+}
