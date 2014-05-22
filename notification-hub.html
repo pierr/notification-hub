@@ -1,0 +1,30 @@
+<link rel="import" href="./bower_components/polymer/polymer.html">
+<polymer-element name="notification-hub">
+  <template>
+    <nav>
+      <ul>
+        <li>Notif</li>
+        <li>Messages</li>
+        <li>{{user.name}}</li>
+      </ul>
+    </nav>
+  </template>
+  <style>
+    notification-hub::shadow ul {
+      list-style-type : none; 
+    }
+    notification-hub::shadow ul li{
+      display : inline;
+      padding : 0 0.5em; /* Pour espacer les boutons entre eux */
+    }
+  </style>
+  <script>
+    Polymer('notification-hub', {
+      created: function() {
+        this.user = {
+          name: "Pierre Besson"
+        }
+      }
+    });
+  </script>
+</polymer-element>
