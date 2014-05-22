@@ -1,28 +1,54 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="bower_components/core-tooltip/core-tooltip.html">
+<link rel="import" href="bower_components/polymer-ui-toolbar/polymer-ui-toolbar.html">
+<link rel="import" href="bower_components/polymer-ui-icon-button/polymer-ui-icon-button.html">
+
 <polymer-element name="notification-hub">
   <template>
-    <nav>
-      <core-ajax url="{{url}}" auto handleAs="json" response="{{resp}}"></core-ajax>
-      <ul>
-        <li>Notif</li>
-        <li>{{resp.user.name}}</li>
-        <li> Messages
-          <ul>
-          <template repeat="{{message in resp.messages}}">
-            <li>{{message}}</li>
-          </template>
-        </ul></li>
-        <li> Notifications
-          <ul>
-          <template repeat="{{notif in resp.notifications}}">
-            <li>{{notif}}</li>
-          </template>
-        </ul></li>
-     </template>
-      </ul>
-    </nav>
+    <!-- load ajax datas -->
+    <core-ajax url="{{url}}" auto handleAs="json" response="{{resp}}"></core-ajax>
+
+    <polymer-ui-toolbar>
+      <!-- title -->
+      <polymer-ui-icon-button icon="menu"></polymer-ui-icon-button>
+      <div flex>Notification hub</div>
+      
+      <!-- User infos. -->
+      <polymer-ui-toolbar responsive>
+        <core-tooltip>
+          <polymer-ui-icon-button icon="contact"></polymer-ui-icon-button>
+          <div tip>
+              <div>{{resp.user.name}}</div>
+                
+          </div>
+        </core-tooltip>
+        
+        <!-- Notifications. -->
+        <core-tooltip>
+          <polymer-ui-icon-button icon="dialoga"></polymer-ui-icon-button>
+          <div tip>
+            <template repeat="{{notif in resp.notifications}}">
+              <div>{{notif}}</div><br />
+            </template>
+          </div>
+        </core-tooltip>
+
+        <!-- Messages. -->
+        <core-tooltip>
+          <polymer-ui-icon-button icon="dialog"></polymer-ui-icon-button>
+          <div tip>
+            <template repeat="{{message in resp.messages}}">
+              <div>{{message}}</div><br />
+            </template>
+          </div>
+        </core-tooltip>
+
+      </polymer-ui-toolbar>
+    </polymer-ui-toolbar>
+
   </template>
+
   <style>
     notification-hub::shadow ul {
       list-style-type : none; 
