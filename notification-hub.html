@@ -1,11 +1,25 @@
-<link rel="import" href="./bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/core-ajax/core-ajax.html">
 <polymer-element name="notification-hub">
   <template>
     <nav>
+      <core-ajax url="{{url}}" auto handleAs="json" response="{{resp}}"></core-ajax>
       <ul>
         <li>Notif</li>
-        <li>Messages</li>
-        <li>{{user.name}}</li>
+        <li>{{resp.user.name}}</li>
+        <li> Messages
+          <ul>
+          <template repeat="{{message in resp.messages}}">
+            <li>{{message}}</li>
+          </template>
+        </ul></li>
+        <li> Notifications
+          <ul>
+          <template repeat="{{notif in resp.notifications}}">
+            <li>{{notif}}</li>
+          </template>
+        </ul></li>
+     </template>
       </ul>
     </nav>
   </template>
@@ -21,9 +35,7 @@
   <script>
     Polymer('notification-hub', {
       created: function() {
-        this.user = {
-          name: "Pierre Besson"
-        }
+        this.url ='http://localhost:8888/data'
       }
     });
   </script>
