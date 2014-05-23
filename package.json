@@ -2,9 +2,10 @@
   "name": "notification-hub",
   "version": "0.0.0",
   "description": "A notification hub using web component.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
